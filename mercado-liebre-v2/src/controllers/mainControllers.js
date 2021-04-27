@@ -1,5 +1,5 @@
 //para poner separador miles a los precios
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
 
 //requiero modulo fs
 const fs = require('fs');
@@ -17,10 +17,6 @@ const listadoProductos = fs.readFileSync(products, {encoding:'utf-8'})
 
 //se convierte a archivo para poder usarlo en javascript
 const listadoProductosParseado = JSON.parse(listadoProductos)
-
-
-
-
 
 
 module.exports = {
@@ -42,19 +38,13 @@ module.exports = {
                 element.priceDiscount = element.price - (element.price * (element.discount/100))
 
 
-                //reemplazo el elemento.price y el elemeneto elemento.priceDiscount   agregado por la funcion que permite a ese precio agregarle el signo de . (haciendo referencia a miles)
-               element.price = toThousand(element.price)
-                element.priceDiscount = toThousand(element.priceDiscount)    
+            
             }
             //si el producto tiene como categoria "in-sale", lo agrego en el array de in-sale
             else {
                 ofertas.push(element)
                 //creo una propiedad dentre del objeto agregado y le asigno el precio * el descuento. Para que me de el precio total ya con el descuento. 
                 element.priceDiscount = element.price - (element.price * (element.discount/100))
-               
-                //reemplazo el elemento.price agregado por la funcion que permite a ese precio agregarle el signo de . (haciendo referencia a miles)
-                element.price = toThousand(element.price)
-                element.priceDiscount = toThousand(element.priceDiscount)   
             }
       })
 
