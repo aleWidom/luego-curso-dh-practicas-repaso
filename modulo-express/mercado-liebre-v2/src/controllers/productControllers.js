@@ -37,7 +37,7 @@ module.exports = {
       //creo una propiedad dentre del objeto agregado y le asigno el precio - (el precio * el descuento). Para que me de el precio total ya con el descuento. 
       product.priceDiscount = product.price - (product.price * (product.discount/100))
 
-      console.log(product)
+      
 
       res.render("product-detail", {product})
       
