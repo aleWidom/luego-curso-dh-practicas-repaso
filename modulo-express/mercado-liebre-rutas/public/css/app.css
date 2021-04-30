@@ -360,6 +360,12 @@ hr {
   border-radius: 8px;
   border: none;
   margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.buy-now-button:hover {
+  background-color: #4589ee;
+ 
 }
 
 .action-button {
@@ -380,6 +386,11 @@ hr {
 .action-button.delete {
   background-color: rgb(248, 69, 37);
 }
+
+.action-button.delete:hover {
+  cursor: pointer;
+}
+
 
 
 /*====== Formularios ======*/
