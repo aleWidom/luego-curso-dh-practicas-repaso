@@ -30,7 +30,9 @@ app.set('views', './src/views'); // Seteo de la ubicación de la carpeta "views"
 // ************ WRITE YOUR CODE FROM HERE ************
 // ************ Route System require and use() ************
 const mainRouter = require('./routes/main');
+const adminRouter = require('./routes/admin')
 app.use('/', mainRouter);
+app.use('/admin', adminRouter);
 
 
 
