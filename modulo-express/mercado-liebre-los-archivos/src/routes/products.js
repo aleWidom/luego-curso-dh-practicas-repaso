@@ -43,7 +43,7 @@ router.post('/',  upload.any(), productsController.store);
 
 // /*** EDIT ONE PRODUCT ***/ 
  router.get('/edit/:id/', productsController.edit)
- router.patch('/:id', upload.any(), productsController.update)
+ router.patch('/:id/', upload.any(), productsController.update)
 
 
 // /*** DELETE ONE PRODUCT***/ 
