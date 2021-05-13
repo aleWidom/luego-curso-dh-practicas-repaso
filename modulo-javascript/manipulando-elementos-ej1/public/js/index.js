@@ -39,45 +39,69 @@ if (decisionUsuario == true) {
            if (hobbie == "Programación" || hobbie == "Programacion" || hobbie == "Programar") {
             //le asigno el valor true si encuentra la palabras
             gustaProgramacion = true
-           } //si no se encuentra la palabra
-           else {
-            //le asigno el valor false si no encuentra la palabras
-            gustaProgramacion = false
-           }
+           } 
            }
 
            //si gustaProgramacion es true
             if (gustaProgramacion) {
             //creo un alert
             alert("Qué bueno que te guste la programación.")
+
+            //capturo la etiqueta que tiene la clase background-img 
+            let backgroundImg = document.querySelector('.background-img')
+            //a esa etiqueta le cambio donde debe buscar la url de la imagen
+            backgroundImg.style.backgroundImage=  "url(../img/programmer.jpeg)";
+
             } //si no te gusta la programacion
             else {
             //creo un alert
             alert("Qué lástima que no te guste la programación") 
+
+            //capturo la etiqueta que tiene la clase background-img 
+            let backgroundImg = document.querySelector('.background-img')
+            //a esa etiqueta le cambio donde debe buscar la url de la imagen
+            backgroundImg.style.backgroundImage=  "url(../img/gatito.jpeg)";
+            
+            
+
+        }
+
+
+
+        let contadorHobbies = 0;
+
+        //creo un elemento ol
+        let ol = document.createElement('ol')
+        //agrego la clase ol a la ol creada
+        ol.classList.add("ol")
+
+        //capturo etiqueta con clase hobbies
+        let articleCapture = document.querySelector('.hobbies')
+
+        //anexo como hijo a la etiqueta que tiene hobbies la ol creada anteriormente
+        articleCapture.appendChild(ol)
+
+
+        for (const hobbie of hobbies) {
+            //si el contador de hobbies es menor a 3
+            if (contadorHobbies < 3) {
+
+            //capturo la etiqueta tiene clase ol    
+            let olCapture = document.querySelector('.ol')    
+
+            //crear un elemento li por cada iteración
+            let li = document.createElement("li"); 
+            //dentro de cada etiqueta li le agrego cada hobbie
+            li.innerHTML = hobbie
+
+            //agrego en cada iteración al ol una lista
+            olCapture.appendChild(li); 
+
+            //sumo 1 por cada iteración
+            contadorHobbies++
+        }
         }
     }
-
-    
-    /* ) Anteriormente guardamos los hobbies del usuario. Te pedimos que generes un listado ordenado (<ol>) con los primeros 3 hobbies (en caso de haber) y lo insertes dentro de la etiqueta <article> de clase “hobbies”.  */
-
-            let contadorHobbies = 0;
-
-            for (const hobbie of hobbies) {
-                if (contadorHobbies == 3) {
-                //crear un elemento
-                document.createElement()
-                contadorHobbies++
-            }
-            }
-  
-
-
-
-
-
-
-
-
 } //si la variable decisionUsuario es false
 else {
     //capto h2 que se encuentra dentro de un contenedor que tiene la clase bienvenida
