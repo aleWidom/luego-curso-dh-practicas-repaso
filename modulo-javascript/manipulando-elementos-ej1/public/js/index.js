@@ -174,3 +174,56 @@ else {
     //capto h2 que se encuentra dentro de un contenedor que tiene la clase bienvenida
     document.querySelector('.bienvenida h2').innerHTML = "Lamentamos que no quieras continuar tu visita por este maravilloso sitio"
 }
+
+
+
+
+
+
+
+//Y más ejercicios
+
+
+
+
+
+//creo un objeto y las propiedades van a ser las que ingresa el usuario
+
+let pelicula = {
+    nombre: prompt('¿Cual es su película favorita?'),
+    director: prompt('¿Quien es el director de dicha película?'),
+    duracion: prompt('¿Cuanto dura esa película?'),
+    actor: prompt('¿Quién es el actor principal en la película?'),
+}
+
+
+//capturo la etiqueta con el id pelicula
+let capturaPelicula = document.querySelector('#pelicula')
+
+//modifico lo que hay dentro de la etiqueta con id pelicula  dentro de cada li le pongo lo que viene del objeto 
+capturaPelicula.innerHTML = `<h2>Pelicula Favorita</h2><ol><li id="nombre"><a>${pelicula.nombre}</a></li><li id="director">${pelicula.director}</li><li id="duracion">${pelicula.duracion}</li><li id="actor">${pelicula.actor}</li></ol>`
+
+
+//muestro lo que estaba oculto
+capturaPelicula.style.display = "block"
+
+
+//selecciono todas las listas que se encuentra dentro la etiqueta con el id pelicula, etiqueta ol y li
+let listaPelicula = document.querySelectorAll('#pelicula ol li')
+
+
+//realizo un ciclo de todas las listas
+for (const iterator of listaPelicula) {
+    //a cada lista le doy estilo
+    iterator.style.textAlign = "center"
+}
+
+
+//pido url de pelicula
+let linkNombrePelicula = prompt('Ingrese url de pelicula')
+
+//seleccion enlace que se encuentra dento de la etiqueta con id pelicula
+let listaNombre  = document.querySelector('#pelicula ol li a')
+
+//le agrego un atributo href con la url que viene de lo que escribio el usuario
+listaNombre.setAttribute('href', linkNombrePelicula)
