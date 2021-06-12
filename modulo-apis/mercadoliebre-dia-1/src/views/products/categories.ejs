@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('../partials/head', {title: 'Categorias', image: '', js: 'categories'}) %>
+
+<body>
+   <!-- Header -->
+   <%- include('../partials/headerNavbar') %>
+   <!-- /Header -->
+
+   <div class="container products-wrapper">
+
+      <div class="row">
+         <div class="col-12">
+            <h1 class="products-title"></h1>
+         </div>
+      </div>
+      <h1>Ultimos Creados</h1>
+      <div class="product-detail">
+         <div class="row">
+            <div class="col-8 row products-container pl-5">
+            </div>
+            <div class="col-12 col-lg-4">
+               <article class="product-detail-info">
+                 <div>
+                    <h2 class="product-detail-title categories" style="font-size: 20px; cursor: pointer;" id="allProducts">
+                       Todos los productos
+                    </h2>
+                 </div>
+                  <div class="categories-list">
+                  </div>
+                  <hr>
+                  <hr>
+               </article>
+            </div>
+         </div>
+      </div>
+      <div class="col-12">
+         <h2 class="products-title no-hay" style="padding: 100px 0; color: tomato;">Todavía no hay productos para catalogar.</h2>
+      </div>
+   </div>
+
+   <!-- footer -->
+   <%- include('../partials/footer') %>
+   <!-- /footer -->
+<script src="/js/categories.js"></script>
+</body>
+
+</html>
