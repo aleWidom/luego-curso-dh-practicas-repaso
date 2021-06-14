@@ -1,5 +1,6 @@
 // ******** Sequelize ***********
 
+const { response } = require('express');
 const { Product, Sequelize, Brand, Category } = require('../../database/models');
 const Op = Sequelize.Op;
 
@@ -59,10 +60,30 @@ module.exports = {
             })
     },
     products: (req,res) => {
-        Category.findAll({
+
+        Product.findAll({ include: { association: 'category' } })
+        .then((resultado) => {
+
+            let respuesta = {
+                "meta": {
+                    "status": 200,
+                    "url": "api/products/all",
+                    "count": resultado.length
+                },
+                "data": resultado
+           
             }
 
-        )
+            res.json(respuesta);
+
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+
+    }, 
+    categories: (req,res) => {
+        Category.findAll()
             .then((data) => {
 
                 let prueba;
