@@ -52,11 +52,16 @@ enlace.addEventListener('click', () => {
             let arrayFavoritos;
 
 
-            //si arrayFavoritos no existe
-            if (arrayFavoritos == undefined) {
+            //si en local storage de nombre gifFavoritos no hay nada
+            if (localStorage.getItem('gifFavoritos') == null) {
                 //incializo variable arrayFavoritos
                 arrayFavoritos = [];
+            } else {
+                //parseo lo que se encuentra en gifFavoritos
+                arrayFavoritos = JSON.parse(localStorage.getItem('gifFavoritos'));
             }
+
+            
 
             // ciclo
             star.forEach((iterator, j) => {
@@ -81,7 +86,7 @@ enlace.addEventListener('click', () => {
                     let arrayFavoritosString = JSON.stringify(arrayFavoritos)
 
                     //seteo la informacion en storage
-                    sessionStorage.setItem('gifFavoritos', arrayFavoritosString)
+                    localStorage.setItem('gifFavoritos', arrayFavoritosString)
 
                 })
 

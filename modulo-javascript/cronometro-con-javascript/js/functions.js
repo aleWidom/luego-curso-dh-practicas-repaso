@@ -39,10 +39,12 @@ start.addEventListener('click', function () {
             //reemplazo inerHTMl por: 
             segundero.innerHTML = `0${seconds}`
         } //si los segundos son mayores o igual a 10 y menoro igual a 59
+        
         else if (seconds >= 10 && seconds <= 59) {
             //reemplazo inerHTMl por: 
             segundero.innerHTML = `${seconds}`
         } //si el resto de dividir los segundos entre 60 da cero
+        
         else if (seconds % 60 == 0) {
             //sumo 1 a minutos  
             minutes++
