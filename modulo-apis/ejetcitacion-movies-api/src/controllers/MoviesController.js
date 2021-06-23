@@ -28,33 +28,10 @@ module.exports = {
 
     create: (req, res) => {
         res.sendFile(path.join(__dirname, '..', 'views', 'create.html'))
-    }, /*
-    store: (req,res) => {
-        db.Movies.create(req.body)
-        .then(() => res.redirect('/movies'))
-        .catch(error=>console.log(error));
     },
     edit: async (req,res)=> {
-        let genres = await db.Genres.findAll();
-        let movie = await db.Movies.findByPk(req.params.id,{
-            include:["genre","actors"]
-        });
-        let availableActors = await getAvailableActorsAndMapToSelectOptions(movie);
-        res.render('movies/edit', { genres, movie, availableActors})
-    },
-    update: (req,res)=> {
-        let _body = req.body
-        db.Movies.update(_body,{
-            where: {id: req.params.id}
-        })
-        .then(() => res.redirect(`/movies/${req.params.id}`))
-        .catch(error=>console.log(error));
-    },
-    destroy: (req, res)=> {
-        db.Movies.destroy({where: {id: req.params.id}})
-            .then(() => res.redirect('/movies'))
-            .catch(error=>console.log(error));
-    },
+        res.sendFile(path.join(__dirname, '..', 'views', 'edit.html'))
+    }, /*
     recommended: (req,res)=>{
         db.Movies.findAll({
             where: {

@@ -1,81 +1,79 @@
-<%- include("../header")  %>
-<p>Update <%= movie.title %> movie</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>IMDB</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+<header>
+    <h1><a href="/">IMDB EDIT HTML</a></h1>
+    <nav>
+        <ul>
+            <li><a href="/movies">Movies</a></li>
+            <li><a href="/movies/recommended">Recommended</a></li>
+            <li><a href="/movies/news">News</a></li>
+            <li>
+                <form action="/movies/search" method="GET">
+                    <input type="text" name="q" class="form-control" placeholder="search movie">
+
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>
 <hr>
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <form action="/movies/<%= movie.id %>?_method=PATCH" method="POST">
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" class="form-control" name="title" value="<%= movie.title %>">
-                </div>
-                <div class="form-group">
-                    <label for="awards">Awards</label>
-                    <input type="number" class="form-control" name="awards" value="<%= movie.awards %>">
-                </div>
-                <div class="form-group">
-                    <label for="length">Length</label>
-                    <input type="number" class="form-control" name="length" value="<%= movie.length %>">
-                </div>
-                <div class="form-group">
-                    <label for="release_date">Release Date</label>
-                    <input type="date" class="form-control" name="release_date"
-                        value="<%= moment(movie.release_date).format("YYYY-MM-DD") %>">
-                </div>
-                <div class="form-group">
-                    <label for="revenue">Revenue</label>
-                    <input type="text" class="form-control" name="revenue" value="<%= movie.revenue %>">
-                </div>
-                <div class="form-group">
-                    <label for="genre_id">Genres</label>
-                    <select class="form-control" name="genre_id">
-                        <option value="" disabled selected>Elegir genero</option>
-                        <% for (genre of genres) { %>
-                        <option value="<%= genre.id %>" <%= genre.id === movie.genre_id ? 'selected': '' %>><%= genre.name %>
-                        </option>
-                        <% } %>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary text-right">Guardar Cambios</button>
-                </div>
-            </form>
-        </div>
-        <div class="col-md-4">
-            <h3>Actors</h3>
-            <% for (const actor of movie.actors) { %>
-            <div class="row mt-2 align-items-center">
-                <div class="col-md-8">
-                    <%= `${actor.first_name} ${actor.last_name}` %>
-                </div>
-                <div class="col-md-4">
-                    <form action="<%= `/movies/${movie.id}/actor/${actor.id}` %>?_method=DELETE" method="POST">
-                        <button type="submit" class="btn btn-danger btn-sm">
-                            Remove
-                        </button>
-                    </form>
-                </div>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control title" name="title">
             </div>
-            <% } %>
-            
-            <form action="/movies/<%= movie.id %>/actor" method="POST">
-                <div class="row mt-5 align-items-center">
-                    <div class="col-md-8">        
-                        <select id="actor_id" name="actor_id" class="form-control">
-                            <% for( let option of availableActors ) { %>
-                                <option value="<%= option.id %>"><%= option.label %></option>
-                            <% } %>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-primary" type="submit">
-                            Add Actor
-                        </button>
-                    </div>
+            <div class="form-group">
+                <label for="awards">Awards</label>
+                <input type="number" class="form-control awards" name="awards">
+            </div>
+            <div class="form-group">
+                <label for="revenue">Revenue</label>
+                <input type="text" class="form-control revenue" name="revenue">
+            </div>
+            <div class="form-group">
+                <label for="release_date">Release Date</label>
+                <input type="date" class="form-control release" name="release_date" >
+            </div>
+            <div class="form-group">
+                <label for="length">Length</label>
+                <input type="number" class="form-control length" name="length">
+            </div>
+            <div class="form-group">
+                <label for="genre_id">Genres</label>
+                <select class="form-control genre" name="genre_id">
+                </select>
+            </div>
+                <div class="form-group">
+                    <a class="btn btn-primary text-right send text-white save-as" href="/">Guardar Cambios<a>
                 </div>
-            </form> 
         </div>
     </div>
 </div>
 
-<%- include("../footer")  %>
+<footer>
+    <p>Imdb - All rights reserved</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+<script src="/js/edit.js"></script>
+</body>
+
+</html>

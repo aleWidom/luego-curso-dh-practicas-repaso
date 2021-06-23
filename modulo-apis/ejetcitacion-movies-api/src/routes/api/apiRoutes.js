@@ -9,6 +9,6 @@ router.get('/genre', apiControllers.genre);
 router.get('/:id', apiControllers.detail);
 router.post('/', apiControllers.create);
 router.patch('/:id', apiControllers.edit);
-
+router.delete('/:id', apiControllers.delete);
 
 module.exports = router;

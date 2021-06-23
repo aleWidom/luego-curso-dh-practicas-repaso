@@ -83,8 +83,10 @@ module.exports = {
             })
     },
     edit: (req, res) => {
-        db.Movies.update({
-            where: req.params.id
+        db.Movies.update(req.body, {
+            where : {
+                id : req.params.id
+            }
         })
             .then((resultado) => {
                 let respuesta = {
@@ -98,6 +100,33 @@ module.exports = {
                 res.json(respuesta)
 
             })
+            .catch((error) => {
+                console.log(error)
+            })
+    },
+    delete: (req,res) => {
+        db.Movies.destroy({
+
+            where: {
+
+                id: req.params.id
+
+            }
+    })
+            .then((resultado) => {
+                let respuesta = {
+                    "meta": {
+                        "status":200
+                    },
+                    "data": resultado
+                }
+
+                res.json(respuesta)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
+
 }
 
